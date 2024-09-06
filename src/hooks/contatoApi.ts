@@ -5,13 +5,8 @@ const api = axios.create({
 });
 
 export const contatoApi = () => ({
-    signin: async (username:string, password:string)=>{
-        const response = await api.post('/api/usuarios/login', { username, password });        
-        return response.data;
-    },
-    logout: async () => {
-        return { status: true };
-        const response = await api.post('/logout');
-        return response.data;
-    },
+    create: async () =>{},
+    update:async () =>{},
+    delete:async () =>{},
+    list:async () =>{}
 });

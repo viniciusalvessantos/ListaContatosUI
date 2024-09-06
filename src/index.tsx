@@ -5,6 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from './contexts/Auth/AuthProvider';
 import { BrowserRouter } from 'react-router-dom';
+import { PessoasProvider } from './contexts/Pessoa/PessoaProvider';
+import { ContatosProvider } from './contexts/Contato/ContatoProvider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,9 +14,13 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <AuthProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <PessoasProvider>
+        <ContatosProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </ContatosProvider>
+      </PessoasProvider>
     </AuthProvider>
   </React.StrictMode>
 );
