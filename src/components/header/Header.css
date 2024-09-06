@@ -1,0 +1,81 @@
+.custom-navbar {
+    background: linear-gradient(90deg, #3D1F54, #713A9D, #713A9D, #3D1F54) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    /* Ajuste os valores conforme necessário */
+}
+.white-text {
+    color: white;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra no texto */
+    letter-spacing: 1px; /* Ajuste o valor para o espaçamento desejado */
+    margin-right: 10px; /* Ajuste o valor para o espaçamento desejado entre os links */
+}
+
+.white-text:hover {
+    color: #3CD178; /* Escolha a cor que deseja para o efeito hover */
+    text-decoration: solid; /* Opcional: para sublinhar o link ao passar o mouse */
+    letter-spacing: 1px; /* Ajuste o valor para o espaçamento desejado */
+    margin-right: 10px; /* Ajuste o valor para o espaçamento desejado entre os links */
+}
+.navbar-nav-center {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif; /* Aplicar a fonte ao botão */
+    font-weight: 600; /* Aplicar SemiBold */
+    font-size: 12px; /* Tamanho da fonte */
+    
+}
+
+.navbar-nav-center .nav-item {
+    margin: 0 15px;
+    font-family: 'Montserrat', sans-serif; /* Aplicar a fonte ao botão */
+    /* Ajuste conforme necessário */
+
+}
+
+.navbar-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.custom-button {
+    background-color: #3CD178 !important;
+    border-color: #3CD178 !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    color: white !important;
+    width: 100px;
+    height: 29px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    font-family: 'Montserrat', sans-serif; /* Aplicar a fonte ao botão */
+    font-weight: 600; /* Aplicar SemiBold */
+    font-size: 12px; /* Tamanho da fonte */
+    /* Ajuste conforme necessário */
+    margin-right: 20px;
+}
+
+.custom-button:hover {
+    background-color: #35BC69 !important;
+    border-color: #35BC69 !important;
+}
+.brand-style {
+    font-family: 'Montserrat', sans-serif; /* Fonte escolhida */
+    font-size: 24px; /* Ajuste o tamanho conforme necessário */
+    font-weight: bold;
+    color: #35BC69; /* Cor do texto */
+    text-transform: uppercase; /* Opcional: transforma o texto em maiúsculas */
+    letter-spacing: 1px; /* Espaçamento entre letras, opcional */
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+  }
+  
+  .brand-style:hover {
+    color: #ff9900; /* Cor ao passar o mouse, se desejado */
+  }
+  
+  .brand-style img {
+    margin-right: 10px; /* Espaçamento entre o ícone e o texto, se houver um ícone */
+  }
