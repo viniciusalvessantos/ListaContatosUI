@@ -16,8 +16,8 @@ export const PessoasProvider: React.FC<{ children: ReactNode }> = ({ children })
         telefone: telefone, 
         email: email, 
       };
-      
-      return 'Pessoa criada com sucesso';
+      const data = await api.create(novaPessoa);
+      return data;
     };
   
     const update = async (id: string, nome: string, sobreNome: string, telefone: string, email: string) => {

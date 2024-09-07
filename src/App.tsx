@@ -19,10 +19,10 @@ function App() {
         <Route path="/" element={<Layout><Home /></Layout>} />
         <Route path="/pessoas" element={<RequireAuth><Layout><Pessoas /></Layout></RequireAuth>} />
         <Route path="/pessoacreate" element={<RequireAuth><Layout><PessoasCreate /></Layout></RequireAuth>} />
-        <Route path="/pessoasupdate" element={<RequireAuth><Layout><PessoasUpdate /></Layout></RequireAuth>} />
-        <Route path="/contatos" element={<RequireAuth><Contato /></RequireAuth>} />
-        <Route path="/contatoscreate" element={<RequireAuth><ContatoCreate /></RequireAuth>} />
-        <Route path="/contatosupdate" element={<RequireAuth><ContatoUpdate /></RequireAuth>} />
+        <Route path="/pessoasupdate/:id" element={<RequireAuth><Layout><PessoasUpdate /></Layout></RequireAuth>} />
+        <Route path="/contatos" element={<RequireAuth><Layout><Contato /></Layout></RequireAuth>} />
+        <Route path="/contatoscreate" element={<RequireAuth><Layout><ContatoCreate /></Layout></RequireAuth>} />
+        <Route path="/contatosupdate" element={<RequireAuth><Layout><ContatoUpdate /></Layout></RequireAuth>} />
       </Routes>
     </div>
   </>

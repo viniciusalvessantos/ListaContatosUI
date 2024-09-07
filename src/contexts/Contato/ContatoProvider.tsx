@@ -14,8 +14,8 @@ export const ContatosProvider: React.FC<{ children: ReactNode }> = ({ children }
           nome: nome, email: email, telefone: telefone, whatsapp: whatsapp, pessoaid: pessoaid,
 
       };
-     
-      return "";
+       const data =  await api.create(novoContato);
+      return data;
     };
   
     const update = async (id: string, nome: string, email: string, telefone: string, whatsapp: string) => {
