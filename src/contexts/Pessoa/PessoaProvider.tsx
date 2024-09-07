@@ -12,7 +12,7 @@ export const PessoasProvider: React.FC<{ children: ReactNode }> = ({ children })
       // Lógica para criar uma nova pessoa
       const novaPessoa: Pessoas = { 
         nome: nome, 
-        sobrenome: sobreNome, 
+        sobreNome: sobreNome, 
         telefone: telefone, 
         email: email, 
       };

@@ -11,7 +11,7 @@ export const ContatosProvider: React.FC<{ children: ReactNode }> = ({ children }
     const create = async (nome: string, email: string, telefone: string, whatsapp: string, pessoaid:string) => {
       // Aqui você pode chamar a API ou realizar a lógica para criar o contato
       const novoContato: Contatos = {
-          nome: nome, email: email, telefone: telefone, whatsapp: whatsapp, pessoaid: pessoaid,
+          nome: nome, email: email, telefone: telefone, whatsApp: whatsapp, pessoaid: pessoaid,
 
       };
        const data =  await api.create(novoContato);

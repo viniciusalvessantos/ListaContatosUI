@@ -12,7 +12,7 @@ export const contatoApi = () => ({
                 nome: contato.nome,
                 email: contato.email,
                 telefone: contato.telefone,
-                whatsApp: contato.whatsapp,
+                whatsApp: contato.whatsApp,
                 pessoaId: contato.pessoaid,
             });
             return response.data;
@@ -28,7 +28,7 @@ export const contatoApi = () => ({
                 nome: contato.nome,
                 email: contato.email,
                 telefone: contato.telefone,
-                whatsApp: contato.whatsapp,
+                whatsApp: contato.whatsApp,
             });
             return response.data;
         } catch (error) {

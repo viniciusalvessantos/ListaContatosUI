@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { pessoaApi } from "../../hooks/pessoaApi";
 import { Pessoas } from "../../types/Pessoas";
-
+import './update.css'
 export const PessoasUpdate = () => {
     const { id } = useParams<{ id: string }>();  // Pega o parâmetro 'id' da URL
     const [pessoa, setPessoa] = useState<Pessoas>({
         nome: '',
-        sobrenome: '',
+        sobreNome: '',
         telefone: '',
         email: ''
     });
@@ -64,54 +64,57 @@ export const PessoasUpdate = () => {
     }
 
     return (
-        <div>
-            <h2>Atualizar Pessoa</h2>
-            {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
-            {pessoa && (
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <label>Nome:</label>
-                        <input 
-                            type="text" 
-                            name="nome" 
-                            value={pessoa.nome} 
-                            onChange={handleChange} 
-                            required 
-                        />
-                    </div>
-                    <div>
-                        <label>Sobrenome:</label>
-                        <input 
-                            type="text" 
-                            name="sobrenome" 
-                            value={pessoa.sobrenome} 
-                            onChange={handleChange} 
-                            required 
-                        />
-                    </div>
-                    <div>
-                        <label>Telefone:</label>
-                        <input 
-                            type="text" 
-                            name="telefone" 
-                            value={pessoa.telefone} 
-                            onChange={handleChange} 
-                            required 
-                        />
-                    </div>
-                    <div>
-                        <label>Email:</label>
-                        <input 
-                            type="email" 
-                            name="email" 
-                            value={pessoa.email} 
-                            onChange={handleChange} 
-                            required 
-                        />
-                    </div>
-                    <button type="submit">Atualizar Pessoa</button>
-                </form>
-            )}
-        </div>
+        <div className="form-container">
+        <h2>Atualizar Pessoa</h2>
+        
+        {successMessage && <p className="success-message">{successMessage}</p>}
+        
+        {pessoa && (
+            <form onSubmit={handleSubmit} className="update-form">
+                <div className="form-group">
+                    <label>Nome:</label>
+                    <input 
+                        type="text" 
+                        name="nome" 
+                        value={pessoa.nome} 
+                        onChange={handleChange} 
+                        required 
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Sobrenome:</label>
+                    <input 
+                        type="text" 
+                        name="sobreNome" 
+                        value={pessoa.sobreNome} 
+                        onChange={handleChange} 
+                        required 
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Telefone:</label>
+                    <input 
+                        type="text" 
+                        name="telefone" 
+                        value={pessoa.telefone} 
+                        onChange={handleChange} 
+                        required 
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Email:</label>
+                    <input 
+                        type="email" 
+                        name="email" 
+                        value={pessoa.email} 
+                        onChange={handleChange} 
+                        required 
+                    />
+                </div>
+                <button type="submit" className="submit-button">Atualizar Pessoa</button>
+            </form>
+        )}
+    </div>
+    
     );
 }

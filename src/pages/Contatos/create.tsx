@@ -2,17 +2,17 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Contatos } from "../../types/Contatos";
 import { contatoApi } from "../../hooks/contatoApi";
-
+import './create.css'
 export const ContatoCreate = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { pessoaId } = location.state || {};  // Acessa o pessoaId passado pela navegação
+    const { pessoaId, pessoa } = location.state || {};  // Acessa o pessoaId passado pela navegação
 
     const [contato, setContato] = useState<Contatos>({
         nome: '',
         email: '',
         telefone: '',
-        whatsapp: '',
+        whatsApp: '',
         pessoaid: pessoaId || '',  // Inicializa com o pessoaId se estiver presente
     });
 
@@ -41,7 +41,7 @@ export const ContatoCreate = () => {
             setError('');
 
             // Redireciona de volta para a lista de contatos
-            navigate('/contatos', { state: { pessoaId } });
+            navigate('/contatos', { state: { pessoaId, pessoa } });
         } catch (error) {
             setError('Erro ao criar o contato.');
             console.error(error);
@@ -49,59 +49,59 @@ export const ContatoCreate = () => {
     };
 
     return (
-        <div>
-            <h2>Criar Contato</h2>
+        <div className="form-container">
+    <h2>Criar Contato</h2>
 
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
+    {error && <p className="error-message">{error}</p>}
+    {successMessage && <p className="success-message">{successMessage}</p>}
 
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Nome:</label>
-                    <input
-                        type="text"
-                        name="nome"
-                        value={contato.nome}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-
-                <div>
-                    <label>Email:</label>
-                    <input
-                        type="email"
-                        name="email"
-                        value={contato.email}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-
-                <div>
-                    <label>Telefone:</label>
-                    <input
-                        type="text"
-                        name="telefone"
-                        value={contato.telefone}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-
-                <div>
-                    <label>WhatsApp:</label>
-                    <input
-                        type="text"
-                        name="whatsapp"
-                        value={contato.whatsapp}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-
-                <button type="submit">Criar Contato</button>
-            </form>
+    <form onSubmit={handleSubmit} className="contact-form">
+        <div className="form-group">
+            <label>Nome:</label>
+            <input
+                type="text"
+                name="nome"
+                value={contato.nome}
+                onChange={handleChange}
+                required
+            />
         </div>
+
+        <div className="form-group">
+            <label>Email:</label>
+            <input
+                type="email"
+                name="email"
+                value={contato.email}
+                onChange={handleChange}
+                required
+            />
+        </div>
+
+        <div className="form-group">
+            <label>Telefone:</label>
+            <input
+                type="text"
+                name="telefone"
+                value={contato.telefone}
+                onChange={handleChange}
+                required
+            />
+        </div>
+
+        <div className="form-group">
+            <label>WhatsApp:</label>
+            <input
+                type="text"
+                name="whatsApp"
+                value={contato.whatsApp}
+                onChange={handleChange}
+                required
+            />
+        </div>
+
+        <button type="submit" className="submit-button">Criar Contato</button>
+    </form>
+</div>
     );
 }

@@ -11,7 +11,7 @@ export const pessoaApi = () => ({
         try {
             const response = await api.post('/pessoas/register', {
                 nome: pessoa.nome,
-                sobreNome: pessoa.sobrenome,
+                sobreNome: pessoa.sobreNome,
                 telefone: pessoa.telefone,
                 email: pessoa.email
             });
@@ -25,7 +25,7 @@ export const pessoaApi = () => ({
         try {
             const response = await api.put(`/pessoas/update/${pessoaId}`, {
                 nome: pessoa.nome,
-                sobreNome: pessoa.sobrenome,
+                sobreNome: pessoa.sobreNome,
                 telefone: pessoa.telefone,
                 email: pessoa.email
             });

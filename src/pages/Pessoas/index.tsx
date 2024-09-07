@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { pessoaApi } from "../../hooks/pessoaApi";
 import { Link, useNavigate } from "react-router-dom";
 import { Pessoas as PessoasType } from '../../types/Pessoas';
+import './pessoas.css'
 export const Pessoas = () => {
     const [pessoas, setPessoas] = useState<PessoasType[]>([]);
     const [loading, setLoading] = useState(true);
@@ -49,51 +50,51 @@ export const Pessoas = () => {
     };
 
     // Função para criar contato, redirecionando com o id da pessoa
-    const handleContact = (id: string) => {
-        navigate(`/contatos`, { state: { pessoaId: id } });
+    const handleContact = (id: string, nome:string) => {
+        navigate(`/contatos`, { state: { pessoaId: id, pessoa:nome  } });
     };
 
     return (
         <div>
-            <h2>Lista de Pessoas</h2>
-
-            <Link to="/pessoacreate">
-                <button>Criar Nova Pessoa</button>
-            </Link>
-
-            {loading && <p>Carregando...</p>}
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-
-            {!loading && pessoas.length > 0 && (
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Sobrenome</th>
-                            <th>Telefone</th>
-                            <th>Email</th>
-                            <th>Ações</th>
+        <h2>Lista de Pessoas</h2>
+    
+        <Link to="/pessoacreate">
+            <button className="create-button">Criar Nova Pessoa</button>
+        </Link>
+    
+        {loading && <p>Carregando...</p>}
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+    
+        {!loading && pessoas.length > 0 && (
+            <table className="custom-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>
+                        <th>Telefone</th>
+                        <th>Email</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {pessoas.map((pessoa) => (
+                        <tr key={pessoa.id}>
+                            <td>{pessoa.nome}</td>
+                            <td>{pessoa.sobreNome}</td>
+                            <td>{pessoa.telefone}</td>
+                            <td>{pessoa.email}</td>
+                            <td className="action-buttons">
+                                <button className="contact-button" onClick={() => handleContact(pessoa.id || '', pessoa.nome || '')}>Ver Contatos</button>
+                                <button className="edit-button" onClick={() => handleEdit(pessoa.id || '')}>Editar</button>
+                                <button className="delete-button" onClick={() => handleDelete(pessoa.id || '')}>Excluir</button>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        {pessoas.map((pessoa) => (
-                            <tr key={pessoa.id}>
-                                <td>{pessoa.nome}</td>
-                                <td>{pessoa.sobrenome}</td>
-                                <td>{pessoa.telefone}</td>
-                                <td>{pessoa.email}</td>
-                                <td>
-                                    <button onClick={() => handleEdit(pessoa.id || '')}>Editar</button>
-                                    <button onClick={() => handleDelete(pessoa.id || '')}>Excluir</button>
-                                    <button onClick={() => handleContact(pessoa.id || '')}>Contatos</button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            )}
-
-            {!loading && pessoas.length === 0 && <p>Nenhuma pessoa cadastrada.</p>}
-        </div>
+                    ))}
+                </tbody>
+            </table>
+        )}
+    
+        {!loading && pessoas.length === 0 && <p>Nenhuma pessoa cadastrada.</p>}
+    </div>
     );
 }

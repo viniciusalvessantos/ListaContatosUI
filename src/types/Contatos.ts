@@ -3,6 +3,6 @@ export type Contatos = {
     nome:string;
     email:string;
     telefone:string;
-    whatsapp:string;
+    whatsApp:string;
     pessoaid:string;
 }

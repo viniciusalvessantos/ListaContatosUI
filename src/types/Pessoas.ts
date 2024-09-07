@@ -1,7 +1,7 @@
 export type Pessoas = {
     id?:string;
     nome:string;
-    sobrenome:string;
+    sobreNome:string;
     telefone:string;
     email:string;
 }
