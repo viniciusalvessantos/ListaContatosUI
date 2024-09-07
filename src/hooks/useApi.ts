@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: "https://localhost:8081"
+    baseURL: "https://apitestevaga-g5gndmhudefbevgb.brazilsouth-01.azurewebsites.net"
 });
 
 export const useApi = () => ({

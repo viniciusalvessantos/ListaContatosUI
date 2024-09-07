@@ -1,19 +1,26 @@
 import axios from 'axios';
 import { Pessoas } from '../types/Pessoas';
-
+const getToken = () => {
+    return localStorage.getItem('authToken'); // Ajuste conforme necessário
+};
 
 const api = axios.create({
-    baseURL: "https://localhost:8081/api/"
+    baseURL: "https://apitestevaga-g5gndmhudefbevgb.brazilsouth-01.azurewebsites.net/api/"
 });
 
 export const pessoaApi = () => ({
     create: async (pessoa: Pessoas) => {
         try {
+            const token = getToken();
             const response = await api.post('/pessoas/register', {
                 nome: pessoa.nome,
                 sobreNome: pessoa.sobreNome,
                 telefone: pessoa.telefone,
                 email: pessoa.email
+            },  {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
             });
             return response.data;
         } catch (error) {
@@ -23,11 +30,16 @@ export const pessoaApi = () => ({
     },
     update: async (pessoaId: string, pessoa: Pessoas) => {
         try {
+            const token = getToken();
             const response = await api.put(`/pessoas/update/${pessoaId}`, {
                 nome: pessoa.nome,
                 sobreNome: pessoa.sobreNome,
                 telefone: pessoa.telefone,
                 email: pessoa.email
+            },  {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
             });
             return response.data;
         } catch (error) {
@@ -37,8 +49,12 @@ export const pessoaApi = () => ({
     },
     delete: async (pessoaId: string) => {
         try {
+            const token = getToken();
             const response = await api.delete(`/pessoas/delete`, {
-                data: { id: pessoaId },
+                headers: {
+                    Authorization: `Bearer ${token}`, // Adiciona o token de autorização
+                },
+                data: { id: pessoaId },  // Inclui o ID da pessoa no corpo da requisição
             });
             return response.data;
         } catch (error) {
@@ -48,7 +64,12 @@ export const pessoaApi = () => ({
     },
     list: async () => {
         try {
-            const response = await api.get('/pessoas/listar');
+            const token = getToken();
+            const response = await api.get('/pessoas/listar',  {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            });
             return response.data;
         } catch (error) {
             console.error('Erro ao listar pessoas:', error);
@@ -57,7 +78,12 @@ export const pessoaApi = () => ({
     },
     visualizar: async (pessoaId: string) => {
         try {
-            const response = await api.get(`/pessoas/visualizar/${pessoaId}`);
+            const token = getToken();
+            const response = await api.get(`/pessoas/visualizar/${pessoaId}`,  {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            });
             return response.data;
         } catch (error) {
             console.error('Erro ao visualizar pessoa:', error);
